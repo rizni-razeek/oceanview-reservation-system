@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ocean View Resort - Reservation System</title>
+</head>
+<body>
+<h1>Ocean View Resort</h1>
+<p>System status: <span id="status">Checking...</span></p>
+
+<script>
+    fetch('api/health')
+        .then(r => r.text())
+        .then(t => document.getElementById('status').textContent = t)
+        .catch(() => document.getElementById('status').textContent = 'ERROR');
+</script>
+</body>
+</html>
