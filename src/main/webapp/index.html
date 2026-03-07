@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ocean View Resort - Reservation System</title>
+
+    <!-- Redirect to login page after 2 seconds -->
+    <meta http-equiv="refresh" content="2; URL=login.html">
 </head>
 <body>
+
 <h1>Ocean View Resort</h1>
+<p>Reservation Management System</p>
+
 <p>System status: <span id="status">Checking...</span></p>
+
+<p>Redirecting to login page...</p>
 
 <script>
     fetch('api/health')
@@ -15,5 +23,6 @@
         .then(t => document.getElementById('status').textContent = t)
         .catch(() => document.getElementById('status').textContent = 'ERROR');
 </script>
+
 </body>
 </html>

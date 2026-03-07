@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Edit Reservation</h1>
+
+<p id="msg" style="color: crimson;"></p>
+
+<form method="post" action="updateReservation">
+    <label for="reservationNo">Reservation No</label><br/>
+    <input id="reservationNo" name="reservationNo" readonly><br/>
+
+    <label for="guestName">Guest Name</label><br/>
+    <input id="guestName" name="guestName" required><br/>
+
+    <label for="guestAddress">Guest Address</label><br/>
+    <input id="guestAddress" name="guestAddress" required><br/>
+
+    <label for="contactNo">Contact Number</label><br/>
+    <input id="contactNo" name="contactNo" required><br/>
+
+    <label for="roomType">Room Type</label><br/>
+    <select id="roomType" name="roomType" required>
+        <option value="">-- Select --</option>
+        <option value="Single">Single</option>
+        <option value="Double">Double</option>
+        <option value="Suite">Suite</option>
+    </select><br/>
+
+    <label for="checkIn">Check-in Date</label><br/>
+    <input id="checkIn" type="date" name="checkIn" required><br/>
+
+    <label for="checkOut">Check-out Date</label><br/>
+    <input id="checkOut" type="date" name="checkOut" required><br/>
+
+    <button type="submit">Update Reservation</button>
+</form>
+
+<p><a href="reservations">Back to Reservations</a></p>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    const error = params.get("error");
+    const ok = params.get("ok");
+
+    if (ok === "1") {
+        document.getElementById("msg").style.color = "green";
+        document.getElementById("msg").textContent = "Reservation updated successfully.";
+    }
+    if (error === "1") {
+        document.getElementById("msg").textContent = "Reservation not found.";
+    }
+    if (error === "2") {
+        document.getElementById("msg").textContent = "Please fill all fields correctly.";
+    }
+    if (error === "3") {
+        document.getElementById("msg").textContent = "Check-out date must be after check-in date.";
+    }
+    if (error === "4") {
+        document.getElementById("msg").textContent = "Server error while updating reservation.";
+    }
+
+    function setValue(id, value) {
+        const el = document.getElementById(id);
+        if (el && value !== null) {
+            el.value = value;
+        }
+    }
+
+    setValue("reservationNo", params.get("reservationNo"));
+    setValue("guestName", params.get("guestName"));
+    setValue("guestAddress", params.get("guestAddress"));
+    setValue("contactNo", params.get("contactNo"));
+    setValue("roomType", params.get("roomType"));
+    setValue("checkIn", params.get("checkIn"));
+    setValue("checkOut", params.get("checkOut"));
+</script>
+
+</body>
+</html>

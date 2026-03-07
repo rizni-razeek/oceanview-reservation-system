@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Add Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Add Reservation</h1>
+<p id="msg" style="color: crimson;"></p>
+
+<form method="post" action="addReservation">
+    <label for="guestName">Guest Name</label><br/>
+    <input id="guestName" name="guestName" required><br/>
+
+    <label for="guestAddress">Guest Address</label><br/>
+    <input id="guestAddress" name="guestAddress" required><br/>
+
+    <label for="contactNo">Contact Number</label><br/>
+    <input id="contactNo" name="contactNo" required><br/>
+
+    <label for="roomType">Room Type</label><br/>
+    <select id="roomType" name="roomType" required>
+        <option value="">-- Select --</option>
+        <option value="Single">Single</option>
+        <option value="Double">Double</option>
+        <option value="Suite">Suite</option>
+    </select><br/>
+
+    <label for="checkIn">Check-in Date</label><br/>
+    <input id="checkIn" type="date" name="checkIn" required><br/>
+
+    <label for="checkOut">Check-out Date</label><br/>
+    <input id="checkOut" type="date" name="checkOut" required><br/>
+
+    <button type="submit">Save Reservation</button>
+</form>
+
+<p><a href="dashboard-static.html">Back to Dashboard</a></p>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const ok = params.get("ok");
+    const error = params.get("error");
+
+    if (ok === "1") {
+        document.getElementById("msg").style.color = "green";
+        document.getElementById("msg").textContent = "Reservation saved successfully.";
+    }
+
+    if (error === "1") {
+        document.getElementById("msg").textContent = "Please fill all fields correctly.";
+    }
+    if (error === "2") {
+        document.getElementById("msg").textContent = "Check-out date must be after check-in date.";
+    }
+    if (error === "3") {
+        document.getElementById("msg").textContent = "Server error while saving reservation.";
+    }
+</script>
+
+</body>
+</html>

@@ -4,19 +4,21 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login - Ocean View Resort</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <h1>Ocean View Resort</h1>
 <h2>Staff Login</h2>
 
-<p id="msg" style="color:crimson;"></p>
+<p id="msg" style="color: crimson;"></p>
 
 <form method="post" action="login">
     <label for="username">Username</label><br/>
-    <input id="username" name="username" required /><br/><br/>
+    <input id="username" name="username" required><br/>
 
     <label for="password">Password</label><br/>
-    <input id="password" name="password" type="password" required /><br/><br/>
+    <input id="password" name="password" type="password" required><br/>
 
     <button type="submit">Login</button>
 </form>
@@ -25,9 +27,16 @@
     const params = new URLSearchParams(window.location.search);
     const error = params.get("error");
 
-    if (error === "1") document.getElementById("msg").textContent = "Invalid username or password.";
-    if (error === "2") document.getElementById("msg").textContent = "Server error. Please try again.";
-    if (error === "3") document.getElementById("msg").textContent = "Please log in to continue.";
+    if (error === "1") {
+        document.getElementById("msg").textContent = "Invalid username or password.";
+    }
+    if (error === "2") {
+        document.getElementById("msg").textContent = "Server error. Please try again.";
+    }
+    if (error === "3") {
+        document.getElementById("msg").textContent = "Please log in to continue.";
+    }
 </script>
+
 </body>
 </html>

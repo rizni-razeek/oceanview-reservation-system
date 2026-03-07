@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>View Reservation Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>View Reservation Details</h1>
+
+<p id="msg" style="color: crimson;"></p>
+
+<form method="get" action="reservationDetails">
+    <label for="reservationNo">Enter Reservation Number</label><br/>
+    <input id="reservationNo" name="reservationNo" required><br/>
+    <button type="submit">View Details</button>
+</form>
+
+<p><a href="dashboard-static.html">Back to Dashboard</a></p>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+
+    if (error === "1") {
+        document.getElementById("msg").textContent = "Please enter a reservation number.";
+    }
+    if (error === "2") {
+        document.getElementById("msg").textContent = "Reservation not found.";
+    }
+</script>
+
+</body>
+</html>

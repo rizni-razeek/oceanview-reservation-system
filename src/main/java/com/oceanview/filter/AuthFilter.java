@@ -7,7 +7,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/dashboard-static.html"})
+@WebFilter(urlPatterns = {
+        "/dashboard-static.html",
+        "/reservations",
+        "/add-reservation.html",
+        "/edit-reservation.html",
+        "/view-reservation.html",
+        "/bill.html",
+        "/help.html",
+        "/addReservation",
+        "/editReservation",
+        "/updateReservation",
+        "/deleteReservation",
+        "/reservationDetails",
+        "/bill"
+})
 public class AuthFilter implements Filter {
 
     @Override
